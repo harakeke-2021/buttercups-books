@@ -1,8 +1,13 @@
 <h1>Home!</h1>
 <div>current user: ({{currentUser.name}})</div>
 <h2>Books</h2>
-{{#each bookList}}
-  <div>
-    {{title}}
+<div class="bookGrid">
+  {{#each bookList}}
+  <div class="bookCard">
+    <h3>
+      {{title}} 
+    </h3>
+  <div class="byline">by {{author}}</div>
   </div>
-{{/each}}
+  {{/each}}
+</div>

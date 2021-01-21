@@ -57,3 +57,33 @@ input {
 input:focus {
   outline: none;
 }
+
+.bookGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 800px;
+}
+
+.bookCard {
+  border: 1px solid #eaeaea;
+  margin: 1rem;
+  padding: 1.5rem;
+  text-align: left;
+  color: inherit;
+  flex-basis: 45%;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.bookCard h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.byline {
+  font-size: 1rem;
+  font-style: oblique;
+  font-weight: 100;
+}
