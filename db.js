@@ -31,9 +31,6 @@ function listUsersBooks(id, db=database){
         author:books.author,
         pubDate:books.pubDate
       }))
-
-
     }
-    })
-
+  })
 }
