@@ -6,23 +6,23 @@ const router = express.Router()
 router.get('/', (req, res) => {
   console.log('cookies:', req.cookies)
   db.listAllBooks()
-  .then(books => {
-    const viewData = {
-      bookList: books,
-      currentUser: {}
-    }
-    res.render('home', viewData)
-  })
+    .then(books => {
+      const viewData = {
+        bookList: books,
+        currentUser: {}
+      }
+      res.render('home', viewData)
+    })
+})
 
 router.get('/functions/:id', (req, res) => {
 
   const id = Number(req.params.id)
 
-  db.listUsersBooks(id) 
+  db.listUsersBooks(id)
     .then((result) => {
       console.log('users books: ', result)
     })
-
 
   res.send(`functions testing! ${id}`)
 })
@@ -32,8 +32,8 @@ router.get('/login', (req, res) => {
 })
 
  router.post('/login', (req, res) => {
-   console.log(req.body)
- })
+  console.log(req.body)
+})
 
 
 module.exports = router
