@@ -12,6 +12,18 @@ router.get('/', (req, res) => {
     }
     res.render('home', viewData)
   })
+
+router.get('/functions/:id', (req, res) => {
+
+  const id = Number(req.params.id)
+
+  db.listUsersBooks(id) 
+    .then((result) => {
+      console.log('users books: ', result)
+    })
+
+
+  res.send(`functions testing! ${id}`)
 })
 
 module.exports = router
