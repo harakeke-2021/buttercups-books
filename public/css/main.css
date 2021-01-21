@@ -18,6 +18,24 @@ html, body {
   padding: 5rem 0.5rem;
 }
 
+.userWelcome {
+  position: absolute;
+  margin: 1rem;
+  padding: 0 0.5rem 0 0.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  color: inherit;
+
+  border: 1px solid #eaeaea
+}
+
+.userWelcome:hover,
+.userWelcome:focus,
+.userWelcome:active {
+  color: #0073f3;
+  border-color: #0070f3;
+}m
+
 .title {
   margin: 0;
   line-height: 1.15;
