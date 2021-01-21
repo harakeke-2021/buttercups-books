@@ -5,7 +5,8 @@ const database = require('knex')(config)
 
 module.exports = {
     listAllBooks: listAllBooks,
-    listUsersBooks: listUsersBooks
+    listUsersBooks: listUsersBooks,
+    donateBook: donateBook
 }
 
 // LISTS ALL BOOKS IN LIBRARY
@@ -33,4 +34,10 @@ function listUsersBooks(id, db=database){
       }))
     }
   })
+}
+
+// USER DONATES BOOK TO LIBRARY
+function donateBook (book, db =database){
+  return db('books')
+  .insert(book)  
 }
