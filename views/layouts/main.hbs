@@ -10,7 +10,7 @@
 
 <body>
   {{#if currentUser}}
-    <a href="" class="userWelcome">Hello {{currentUser.name}}</a>
+    <a href="/logout" class="userWelcome">Hello {{currentUser.name}}</a>
   {{else}}
     <a href="/login" class="userWelcome">login</a>
   {{/if}}
