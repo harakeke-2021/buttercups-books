@@ -4,6 +4,7 @@ exports.up = (knex) => {
     table.string('title')
     table.string('author')
     table.string('pub_date')
+    table.integer('donor_id').references('users.id')
   })
 }
 
