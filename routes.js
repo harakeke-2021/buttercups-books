@@ -3,8 +3,6 @@ const db = require('./db')
 
 const router = express.Router()
 
-//get all books
-//render to home
 router.get('/', (req, res) => {
   db.listAllBooks()
   .then(books => {
@@ -15,7 +13,5 @@ router.get('/', (req, res) => {
     res.render('home', viewData)
   })
 })
-
-router.get('')
 
 module.exports = router
