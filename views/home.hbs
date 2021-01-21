@@ -1,8 +1,14 @@
-<h1>Home!</h1>
-<div>current user: ({{currentUser.name}})</div>
-<h2>Books</h2>
-{{#each bookList}}
-  <div>
-    {{title}}
+<h1>Books in library</h1>
+<div class="bookGrid">
+  {{#each bookList}}
+  <div class="bookCard">
+    <h3>
+      {{title}} 
+    </h3>
+    <div class="byline">by {{author}}</div>
+    <hr/>
+    <p class="published">Published on {{pub_date}}</p>
+    <p class="cardFooter">donated by: {{donor.name}}</p>
   </div>
-{{/each}}
+  {{/each}}
+</div>

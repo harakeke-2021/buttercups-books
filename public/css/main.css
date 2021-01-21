@@ -18,6 +18,24 @@ html, body {
   padding: 5rem 0.5rem;
 }
 
+.userWelcome {
+  position: absolute;
+  margin: 1rem;
+  padding: 0 0.5rem 0 0.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  color: inherit;
+
+  border: 1px solid #eaeaea
+}
+
+.userWelcome:hover,
+.userWelcome:focus,
+.userWelcome:active {
+  color: #0073f3;
+  border-color: #0070f3;
+}
+
 .title {
   margin: 0;
   line-height: 1.15;
@@ -38,9 +56,9 @@ header {
   align-items: center;
 }
 
-.loginForm {
+/* .loginForm {
 
-}
+} */
 
 input {
   font-family: inherit;
@@ -56,4 +74,52 @@ input {
 
 input:focus {
   outline: none;
+}
+
+.bookGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 800px;
+}
+
+.bookCard {
+  position: relative;
+  border: 1px solid #eaeaea;
+  margin: 1rem;
+  padding: 1.5rem;
+  text-align: left;
+  color: inherit;
+  flex-basis: 45%;
+  min-height: 350px;
+  border-radius: 10px;
+}
+
+.bookCard h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.byline {
+  font-size: 1rem;
+  font-style: oblique;
+  font-weight: 100;
+}
+
+@media (max-width: 600px) {
+  .bookGrid {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .bookCard {
+    flex-basis: 100%;
+    width: 400px;
+  }
+}
+
+.cardFooter {
+  position: absolute;
+  bottom: 0px;
 }
