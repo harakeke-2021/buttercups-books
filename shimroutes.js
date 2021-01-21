@@ -5,7 +5,16 @@ const router = express.Router()
 
 
 router.get('/', (req, res) => {
-  res.send('homepage (but shimmed)!')
+  res.render('home', {})
+})
+
+router.get('/login', (req, res) => {
+  res.render('login')
+})
+
+router.post('/login', (req, res) => {
+  const { user } = req.body
+  console.log(user)
 })
 
 router.get('/yo', (req, res) => {
