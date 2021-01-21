@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
     .then(books => {
       const viewData = {
         bookList: books,
-        currentUser: {}
       }
       res.render('home', viewData)
     })
