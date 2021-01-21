@@ -4,6 +4,7 @@ const db = require('./db')
 const router = express.Router()
 
 router.get('/', (req, res) => {
+  console.log('cookies:', req.cookies)
   db.listAllBooks()
   .then(books => {
     const viewData = {

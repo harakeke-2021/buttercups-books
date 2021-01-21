@@ -1,4 +1,5 @@
 const express = require('express')
+const cookieparser = require('cookie-parser')
 const hbs = require('express-handlebars')
 
 const routes = require('./routes')
@@ -10,6 +11,7 @@ server.engine('hbs', hbs({ extname: 'hbs' }))
 server.set('view engine', 'hbs')
 server.use(express.urlencoded({ extended: true }))
 server.use(express.static('public'))
+server.use(cookieparser())
 
 server.use('/shim/', shims)
 server.use('/', routes)
