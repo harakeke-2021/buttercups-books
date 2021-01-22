@@ -39,11 +39,15 @@ router.get('/login', (req, res) => {
 })
 
 // LOGIN POST ROUTE
-router.post('/login', (req, res) => {
-  db.getUserByName(req.body.loginName)
-    .then(user => {
-      res.cookie('userId', `${user.id}`).redirect('/')
-    })
+
+router.post('/login', async (req, res) => {
+  let user = await db.getUserByName(req.body.loginName)
+  if (!user) {
+    const newId = await db.createUser(req.body.loginName)
+    user = await db.getUserById(newId)
+  }
+
+  res.cookie('userId', `${user.id}`).redirect('/')
 })
 
 router.get('/logout', (req, res) => {
@@ -83,5 +87,27 @@ router.post('/donate', (req,res) => {
     })
 
 })
+
+// PERSONAL PROFILE ROUTE
+router.get('/profile', (req,res) => { 
+
+  res.render('profile')
+})
+
+// PROFILE ROUTE BY ID
+router.get('/profile/:id', (req,res) => {
+
+  const id = Number(req.params.id)
+
+  db.listUsersBooks(id)
+    .then((result) => {
+      console.log('profile: ',result)
+      res.render('profile', result)
+    })
+
+
+
+})
+
 
 module.exports = router
