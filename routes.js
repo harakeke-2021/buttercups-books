@@ -89,9 +89,12 @@ router.post('/donate', (req,res) => {
 })
 
 // PERSONAL PROFILE ROUTE
-router.get('/profile', (req,res) => { 
+router.get('/profile', async (req,res) => { 
+  const uid = req.cookies.userId
 
-  res.render('profile')
+  const currentUser = await db.getUserById(uid)
+
+  res.render('profile', { currentUser, name: currentUser.name })
 })
 
 // PROFILE ROUTE BY ID
