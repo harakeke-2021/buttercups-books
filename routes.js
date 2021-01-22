@@ -46,4 +46,26 @@ router.get('/logout', (req, res) => {
   res.clearCookie('userId').redirect('/')
 })
 
+// PERSONAL PROFILE ROUTE
+router.get('/profile', (req,res) => { 
+
+  res.render('profile')
+})
+
+// PROFILE ROUTE BY ID
+router.get('/profile/:id', (req,res) => {
+
+  const id = Number(req.params.id)
+
+  db.listUsersBooks(id)
+    .then((result) => {
+      console.log('profile: ',result)
+      res.render('profile', result)
+    })
+
+
+
+})
+
+
 module.exports = router
