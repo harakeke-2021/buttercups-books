@@ -42,4 +42,8 @@ router.post('/login', (req, res) => {
     })
 })
 
+router.get('/logout', (req, res) => {
+  res.clearCookie('userId').redirect('/')
+})
+
 module.exports = router
