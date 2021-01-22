@@ -50,29 +50,35 @@ router.get('/logout', (req, res) => {
   res.clearCookie('userId').redirect('/')
 })
 //PLEASE REMOVE LATER  .PLACEHOLDER id is meant to represent for cookie user id. PLEASE REMOVE LATER
-router.get('/donate/:id', (req,res) => {
-  const id = 10//req.params.id
-  
-  viewData = {
-    id: id
-  }
-  res.render('donate', viewData)
+router.get('/donate', (req,res) => {
+  const uid = req.cookies.userId
+  if(!uid) res.redirect('/login')
+
+  db.getUserById(uid)
+    .then(user => {
+      viewData = {
+        currentUser: user,
+        id: uid
+      }
+      res.render('donate', viewData)
+    })
 })
 
 // DONATE POST ROUTE
-router.post('/donate/:id', (req,res) => {
+router.post('/donate', (req,res) => {
 
   const {title, author, pubDate} = req.body
+  const uid = req.cookies.userId
 
   const viewData = {
-    donor_id: 1,
+    donor_id: uid,
     title: title,
     author:author,
     pub_date: pubDate
   }
 
   db.donateBook(viewData)
-    .then((result) => {
+    .then(() => {
       res.redirect('/')
     })
 
