@@ -1,13 +1,13 @@
-<h1>Books donated by {{forUser.name}}</h1>
+<h1>Books donated by {{name}}</h1>
 <div class="bookGrid">
-  {{#each bookList}}
+  {{#each books}}
   <div class="bookCard bookProfile">
     <h3>
       {{title}} 
     </h3>
     <div class="byline">by {{author}}</div>
     <hr/>
-    <p class="published">Published on {{pub_date}}</p>
+    <p class="published">Published on {{pubDate}}</p>
     {{!-- <p class="cardFooter">donated by: {{donor.name}}</p> --}}
   </div>
   {{/each}}
