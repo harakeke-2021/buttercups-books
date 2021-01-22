@@ -92,11 +92,11 @@ router.post('/donate', (req,res) => {
 router.get('/profile', async (req,res) => { 
   const uid = req.cookies.userId
 
-  const currentUser = await db.getUserById(uid)
-  const booksResult = db.listUsersBooks(uid)
+  // const currentUser = await db.getUserById(uid)
+  // const booksResult = db.listUsersBooks(uid)
 
-  res.render('profile', { books: booksResult, name: currentUser.name, currentUser })
-  // res.render('profile', booksResult)
+  // res.render('profile', { books: booksResult, name: currentUser.name, currentUser })
+  // // res.render('profile', booksResult)
   res.redirect(`/profile/${uid}`)
 })
 
