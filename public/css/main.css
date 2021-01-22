@@ -104,6 +104,10 @@ input:focus {
   border-radius: 10px;
 }
 
+.bookProfile {
+  min-height: 180px;
+}
+
 .bookCard h3 {
   margin: 0;
   font-size: 1.5rem;
