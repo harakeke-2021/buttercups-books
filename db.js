@@ -6,7 +6,8 @@ const database = require('knex')(config)
 module.exports = {
     listAllBooks: listAllBooks,
     listUsersBooks: listUsersBooks,
-    donateBook: donateBook
+    donateBook: donateBook,
+    getUserById: getUserById
 }
 
 // LISTS ALL BOOKS IN LIBRARY
@@ -41,3 +42,10 @@ function donateBook (book, db =database){
   return db('books')
   .insert(book)  
 }
+
+function getUserById(id, db = database){
+  return db('users')
+  .where('id', id )
+}
+
+
