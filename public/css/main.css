@@ -25,8 +25,8 @@ html, body {
   border-radius: 5px;
   text-decoration: none;
   color: inherit;
-
-  border: 1px solid #eaeaea
+  border: 1px solid #eaeaea;
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
 
 .userWelcome:hover,
