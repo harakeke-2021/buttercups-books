@@ -52,11 +52,9 @@ function getUserById(id, db = database){
 
 // GETS USER BY NAME
 function getUserByName(name, db =database){
-
-  const lowername = name.toLowerCase()
-  
+  const lowername = name.toLowerCase()  
   return db('users')
-  .where('name', lowername)
+    .where('name', lowername)
 }
 
 
