@@ -35,11 +35,14 @@ router.get('/login', (req, res) => {
   res.render('login')
 })
 
-router.post('/login', (req, res) => {
-  db.getUserByName(req.body.loginName)
-    .then(user => {
-      res.cookie('userId', `${user.id}`).redirect('/')
-    })
+router.post('/login', async (req, res) => {
+  let user = await db.getUserByName(req.body.loginName)
+  if (!user) {
+    const newId = await db.createUser(req.body.loginName)
+    user = await db.getUserById(newId)
+  }
+
+  res.cookie('userId', `${user.id}`).redirect('/')
 })
 
 router.get('/logout', (req, res) => {
