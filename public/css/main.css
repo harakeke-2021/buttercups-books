@@ -72,6 +72,14 @@ input {
   border-bottom: 2px solid #eee;
 }
 
+.formField {
+  display: block;
+  padding: 10px;
+  padding-top: 20px;
+  border: 0;
+  border-bottom: 2px solid #eee;
+}
+
 input:focus {
   outline: none;
 }
