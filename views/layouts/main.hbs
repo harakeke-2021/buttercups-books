@@ -10,9 +10,15 @@
 
 <body>
   {{#if currentUser}}
+  <div class="welcomeContainer">
     <a href="/logout" class="userWelcome">Hello {{currentUser.name}}</a>
+    <a href="/profile" class="userWelcome">Profile</a>
+  </div>
   {{else}}
+  <div class="welcomeContainer">
+  
     <a href="/login" class="userWelcome">login</a>
+  </div>
   {{/if}}
   <div class="container">
     <header>
