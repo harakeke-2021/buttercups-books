@@ -8,7 +8,8 @@ module.exports = {
   donateBook: donateBook,
   getUserById: getUserById,
   getUserByName: getUserByName,
-  getBookInfo: getBookInfo
+  getBookInfo: getBookInfo,
+  createUser
 }
 
 // LISTS ALL BOOKS IN LIBRARY
@@ -55,6 +56,13 @@ function getUserByName (name, db = database) {
   return db('users')
     .where('name', lowername)
     .first()
+}
+
+// CREATE USER
+function createUser (name, db = database) {
+  const lowername = name.toLowerCase()
+  return db('users')
+    .insert({ name })
 }
 
 // GET INDIVIDUAL BOOK INFO
