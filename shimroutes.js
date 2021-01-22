@@ -29,4 +29,13 @@ router.get('/yo', (req, res) => {
   res.send('yopage (but shimmed)!')
 })
 
+router.get('/donate', (req, res) => {
+  res.render('donate')
+})
+
+router.post('/donate', (req, res) => {
+  console.log(req.body)
+  res.send(JSON.stringify(req.body))
+})
+
 module.exports = router
