@@ -93,8 +93,11 @@ router.get('/profile', async (req,res) => {
   const uid = req.cookies.userId
 
   const currentUser = await db.getUserById(uid)
+  const booksResult = db.listUsersBooks(uid)
 
-  res.render('profile', { currentUser, name: currentUser.name })
+  res.render('profile', { books: booksResult, name: currentUser.name, currentUser })
+  // res.render('profile', booksResult)
+  res.redirect(`/profile/${uid}`)
 })
 
 // PROFILE ROUTE BY ID
@@ -104,8 +107,14 @@ router.get('/profile/:id', (req,res) => {
 
   db.listUsersBooks(id)
     .then((result) => {
-      console.log('profile: ',result)
-      res.render('profile', result)
+
+      db.getUserById(id)
+      .then(user => {
+        result.currentUser = user
+          console.log('profile: ',result)
+          res.render('profile', result)
+
+        })
     })
 
 
