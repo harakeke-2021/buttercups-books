@@ -4,12 +4,18 @@ const db = require('./db')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  console.log('cookies:', req.cookies)
-  db.listAllBooks()
-    .then(books => {
+  const uid = req.cookies.userId
+
+  const pr = [db.listAllBooks()]
+  if (uid) pr.push(db.getUserById(uid))
+
+  Promise.all(pr)
+    .then(([books, user]) => {
       const viewData = {
         bookList: books
       }
+      if (user) viewData.currentUser = user
+
       res.render('home', viewData)
     })
 })
@@ -30,13 +36,9 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-  console.log(req.body)
   db.getUserByName(req.body.loginName)
     .then(user => {
-      console.log(user)
-      console.log(user.id)
-
-      res.cookie('userId', `${user[0].id}`).redirect('/')
+      res.cookie('userId', `${user.id}`).redirect('/')
     })
 })
 
