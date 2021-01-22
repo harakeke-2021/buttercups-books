@@ -5,19 +5,24 @@ const router = express.Router()
 
 // HOMEPAGE
 router.get('/', (req, res) => {
-  console.log('cookies:', req.cookies)
-  db.listAllBooks()
-    .then(books => {
+  const uid = req.cookies.userId
+
+  const pr = [db.listAllBooks()]
+  if (uid) pr.push(db.getUserById(uid))
+
+  Promise.all(pr)
+    .then(([books, user]) => {
       const viewData = {
-        bookList: books,
+        bookList: books
       }
+      if (user) viewData.currentUser = user
+
       res.render('home', viewData)
     })
 })
 
 // FUNCTION TESTING ROUTE
 router.get('/functions/:id', (req, res) => {
-
   const id = Number(req.params.id)
 
   db.listUsersBooks(id)
@@ -34,10 +39,16 @@ router.get('/login', (req, res) => {
 })
 
 // LOGIN POST ROUTE
- router.post('/login', (req, res) => {
-  console.log(req.body)
+router.post('/login', (req, res) => {
+  db.getUserByName(req.body.loginName)
+    .then(user => {
+      res.cookie('userId', `${user.id}`).redirect('/')
+    })
 })
 
+router.get('/logout', (req, res) => {
+  res.clearCookie('userId').redirect('/')
+})
 //PLEASE REMOVE LATER  .PLACEHOLDER id is meant to represent for cookie user id. PLEASE REMOVE LATER
 router.get('/donate/:id', (req,res) => {
   const id = 10//req.params.id
@@ -66,7 +77,5 @@ router.post('/donate/:id', (req,res) => {
     })
 
 })
-
-
 
 module.exports = router

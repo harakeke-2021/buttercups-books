@@ -25,8 +25,8 @@ html, body {
   border-radius: 5px;
   text-decoration: none;
   color: inherit;
-
-  border: 1px solid #eaeaea
+  border: 1px solid #eaeaea;
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
 
 .userWelcome:hover,
@@ -104,6 +104,10 @@ input:focus {
   border-radius: 10px;
 }
 
+.bookProfile {
+  min-height: 180px;
+}
+
 .bookCard h3 {
   margin: 0;
   font-size: 1.5rem;
@@ -130,4 +134,24 @@ input:focus {
 .cardFooter {
   position: absolute;
   bottom: 0px;
+}
+
+.hideLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.donateLink {
+  margin: 1rem;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  border-radius: 5px;
+  border: 1px solid #eaeaea;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.donateLink:hover,
+.donateLink:focus,
+.donateLink:active {
+  color: #0073f3;
+  border-color: #0070f3;
 }

@@ -1,19 +1,14 @@
-<h1>Books in library</h1>
+<h1>Books donated by {{forUser.name}}</h1>
 <div class="bookGrid">
   {{#each bookList}}
-  <div class="bookCard">
+  <div class="bookCard bookProfile">
     <h3>
       {{title}} 
     </h3>
     <div class="byline">by {{author}}</div>
     <hr/>
     <p class="published">Published on {{pub_date}}</p>
-    <p class="cardFooter">donated by: {{donor.name}}</p>
+    {{!-- <p class="cardFooter">donated by: {{donor.name}}</p> --}}
   </div>
   {{/each}}
 </div>
-<a class="hideLink" href="/donate">
-  <h3 class="donateLink">
-    Donate a book +
-  </h3>
-</a>
