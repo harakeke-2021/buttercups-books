@@ -15,6 +15,8 @@ module.exports = {
 // LISTS ALL BOOKS IN LIBRARY
 function listAllBooks (db = database) {
   return db('books')
+    .join('users', 'books.donor_id', 'users.id')
+    .select('title','author', 'pub_date as pubDate', 'name', 'books.id as id')
 }
 
 // LISTS ALL BOOKS BELONGING TO USER
